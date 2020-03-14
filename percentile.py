@@ -1,16 +1,23 @@
 from api import alphavantage as api_interface
 import core
 from dotenv import load_dotenv
+import interface.input
+import interface.output
 import os
-import sys
 
 load_dotenv()
 
+symbol = interface.input.fetch_symbol()
 
-if 1 < len(sys.argv):
-    symbol = sys.argv[1]
-else:
-    symbol = input('Please provide a symbol to analyse:\n')
+response = api_interface.fetch(symbol, os.getenv("APIKEY"))
 
+prices = core.extract_prices(response)
 
-api_interface.fetch(symbol, os.getenv("APIKEY"))
+earnings = core.calculate_earnings(prices[:36*5+1])
+
+weekly_earnings = core.group_by_weeks(earnings, 36)
+
+percentile = core.calculate_percentile(weekly_earnings)
+
+interface.output.print_weeks_earnings(response, weekly_earnings)
+interface.output.print_percentile(percentile)
