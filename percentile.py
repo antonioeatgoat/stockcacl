@@ -1,4 +1,5 @@
 from api import alphavantage as api_interface
+import core
 from dotenv import load_dotenv
 import os
 import sys
@@ -12,4 +13,4 @@ else:
     symbol = input('Please provide a symbol to analyse:\n')
 
 
-print(api_interface.fetch(symbol, os.getenv("APIKEY")))
+api_interface.fetch(symbol, os.getenv("APIKEY"))

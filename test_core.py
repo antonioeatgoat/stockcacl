@@ -1,6 +1,5 @@
 import unittest
 import core
-import pandas
 
 
 class TestInit(unittest.TestCase):
@@ -43,6 +42,15 @@ class TestInit(unittest.TestCase):
         prices = core._extract_prices(self.earning_values)
 
         self.assertEqual(expected, core.calculate_earnings(prices))
+
+    def test_calculate_percentile(self):
+        expected = 0.9
+
+        prices = core._extract_prices(self.earning_values)
+
+        earnings = core.calculate_earnings(prices)
+
+        self.assertEqual(expected, core.calculate_percentile(earnings))
 
 
 if __name__ == '__main__':
