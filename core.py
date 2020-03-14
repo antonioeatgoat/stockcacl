@@ -1,5 +1,6 @@
-import statistics
 import pandas
+import numpy
+from scipy import stats
 
 
 def _extract_prices(days_series: dict) -> []:
@@ -21,7 +22,7 @@ def _group_by_weeks(prices: [], weeks_limit: int) -> []:
         if end_range >= n_prices or end_range > days_limit:
             break
 
-        weekly_averages.append(statistics.mean(prices[i:end_range]))
+        weekly_averages.append(numpy.mean(prices[i:end_range]))
 
     return weekly_averages
 
@@ -36,11 +37,7 @@ def calculate_earnings(prices: []) -> []:
     return prices[:-1]
 
 
-def calculate_percentile(days_series: dict):
-    pass
+def calculate_percentile(prices: []):
+    percentiles = pandas.DataFrame(prices).rank(pct=True)
 
-# def calculate_percentile(values: []) -> float:
-#     array = values[1:]
-#
-#     return stats.percentileofscore(array, values[0], kind='strict')
-#     return round(stats.percentileofscore(values[1:], values[0]), 1)
+    return percentiles[0].round(2).tolist()[0]
