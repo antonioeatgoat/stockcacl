@@ -25,28 +25,28 @@ class TestInit(unittest.TestCase):
     def test_calculates_weekly_average_prices(self):
         expected = [6.4, 5.2, 5.2]
 
-        prices = core._extract_prices(self.earning_values)
+        prices = core.extract_prices(self.earning_values)
 
         # Limit minor than number of days
-        self.assertEqual(expected, core._group_by_weeks(prices, 3))
+        self.assertEqual(expected, core.group_by_weeks(prices, 3))
 
         # Limit partially exceeding the number of days
-        self.assertEqual(expected, core._group_by_weeks(prices, 4))
+        self.assertEqual(expected, core.group_by_weeks(prices, 4))
 
         # Limit exceeding the number of days by more than one week
-        self.assertEqual(expected, core._group_by_weeks(prices, 5))
+        self.assertEqual(expected, core.group_by_weeks(prices, 5))
 
     def test_calculate_earnings(self):
         expected = [.67, -.5, -.25, -.20, 2.33, .50, -.75, 0.0, .60, .67, -.25, -.33, -.14, .17, 0.0]
 
-        prices = core._extract_prices(self.earning_values)
+        prices = core.extract_prices(self.earning_values)
 
         self.assertEqual(expected, core.calculate_earnings(prices))
 
     def test_calculate_percentile(self):
         expected = 0.9
 
-        prices = core._extract_prices(self.earning_values)
+        prices = core.extract_prices(self.earning_values)
 
         earnings = core.calculate_earnings(prices)
 

@@ -3,13 +3,13 @@ import numpy
 from scipy import stats
 
 
-def _extract_prices(days_series: dict) -> []:
+def extract_prices(days_series: dict) -> []:
     """Given a dictionary of days => prices, returns an array containing the list of the prices"""
 
     return list(days_series.values())
 
 
-def _group_by_weeks(prices: [], weeks_limit: int) -> []:
+def group_by_weeks(prices: [], weeks_limit: int) -> []:
     """Given a dictionary of days, group them by five and return a array containing the mean of each group"""
 
     days_limit = weeks_limit * 5
