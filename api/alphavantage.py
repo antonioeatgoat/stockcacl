@@ -25,6 +25,6 @@ def _parse_alpha_response(response: requests.Response) -> dict:
     parsed_data = {}
 
     for day, values in list(data.values())[1].items():
-        parsed_data[day] = list(values.values())[3]
+        parsed_data[day] = float(list(values.values())[3])
 
     return parsed_data
