@@ -11,3 +11,7 @@ def print_weeks_earnings(day_series: dict, earnings: [float]):
 def print_percentile(percentile: float):
     print('\n')
     print(f'The percentile value is {percentile*100}')
+
+
+def print_numeric_percentile(percentile: float):
+    print(percentile * 100)

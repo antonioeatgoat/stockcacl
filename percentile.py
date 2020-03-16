@@ -36,5 +36,8 @@ weekly_earnings = core.group_by_weeks(earnings, 36)
 
 percentile = core.calculate_percentile(weekly_earnings)
 
-interface.output.print_weeks_earnings(response, weekly_earnings)
-interface.output.print_percentile(percentile)
+if interface.input.is_numeric_output():
+    interface.output.print_numeric_percentile(percentile)
+else:
+    interface.output.print_weeks_earnings(response, weekly_earnings)
+    interface.output.print_percentile(percentile)
