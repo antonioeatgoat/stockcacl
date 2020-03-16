@@ -3,7 +3,7 @@ import core
 
 
 class TestInit(unittest.TestCase):
-    earning_values = {
+    closing_prices = {
         '2020-03-10': 5,
         '2020-03-9': 3,
         '2020-03-8': 6,
@@ -25,7 +25,7 @@ class TestInit(unittest.TestCase):
     def test_calculates_weekly_average_prices(self):
         expected = [6.4, 5.2, 5.2]
 
-        prices = core.extract_prices(self.earning_values)
+        prices = core.extract_prices(self.closing_prices)
 
         # Limit minor than number of days
         self.assertEqual(expected, core.group_by_weeks(prices, 3))
@@ -39,14 +39,14 @@ class TestInit(unittest.TestCase):
     def test_calculate_earnings(self):
         expected = [.67, -.5, -.25, -.20, 2.33, .50, -.75, 0.0, .60, .67, -.25, -.33, -.14, .17, 0.0]
 
-        prices = core.extract_prices(self.earning_values)
+        prices = core.extract_prices(self.closing_prices)
 
         self.assertEqual(expected, core.calculate_earnings(prices))
 
     def test_calculate_percentile(self):
         expected = 0.9
 
-        prices = core.extract_prices(self.earning_values)
+        prices = core.extract_prices(self.closing_prices)
 
         earnings = core.calculate_earnings(prices)
 
