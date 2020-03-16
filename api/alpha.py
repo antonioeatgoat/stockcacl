@@ -6,6 +6,10 @@ Get apikey: https://www.alphavantage.co/support/#api-key
 """
 
 import requests
+from exception.InvalidApiKeyException import InvalidApiKeyException
+from exception.InvalidApiCallException import InvalidApiCallException
+from exception.ApiGenericException import ApiGenericException
+from exception.TooManyRequestsException import TooManyRequestsException
 
 
 def fetch(symbol: str, apikey: str) -> dict:
@@ -22,9 +26,24 @@ def _make_request(url: str) -> requests.Response:
 def _parse_alpha_response(response: requests.Response) -> dict:
     """Converts the data coming from api to an expected format"""
     data = response.json()
-    parsed_data = {}
 
+    __validate_data(data)
+
+    parsed_data = {}
     for day, values in list(data.values())[1].items():
         parsed_data[day] = float(list(values.values())[3])
 
     return parsed_data
+
+
+def __validate_data(data: {}):
+    """Validate the data returned by API"""
+    if "Error Message" in data:
+        if "apikey is invalid" in data["Error Message"]:
+            raise InvalidApiKeyException(data["Error Message"])
+        elif "Invalid API call" in data["Error Message"]:
+            raise InvalidApiCallException(data["Error Message"])
+        else:
+            raise ApiGenericException(data["Error Message"])
+    elif "Note" in data and "API call frequency" in data['Note']:
+        raise TooManyRequestsException(data['Note'])
