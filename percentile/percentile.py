@@ -1,6 +1,5 @@
 import pandas
 import numpy
-from scipy import stats
 
 
 def extract_prices(days_series: dict) -> []:
@@ -41,3 +40,7 @@ def calculate_percentile(prices: []):
     percentiles = pandas.DataFrame(prices).rank(pct=True)
 
     return percentiles[0].round(2).tolist()[0]
+
+
+if __name__ == "__main__":
+    print('percentile-py file called')

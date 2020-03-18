@@ -1,15 +1,15 @@
 """
-Api interface to fetch prices data from Alpha Vantage api
+Api _interface to fetch prices data from Alpha Vantage api
 
 Documentation: https://www.alphavantage.co/documentation/
 Get apikey: https://www.alphavantage.co/support/#api-key
 """
 
 import requests
-from exception.InvalidApiKeyException import InvalidApiKeyException
-from exception.InvalidApiCallException import InvalidApiCallException
-from exception.ApiGenericException import ApiGenericException
-from exception.TooManyRequestsException import TooManyRequestsException
+from percentile.exception.InvalidApiKeyException import InvalidApiKeyException
+from percentile.exception.InvalidApiCallException import InvalidApiCallException
+from percentile.exception.ApiGenericException import ApiGenericException
+from percentile.exception.TooManyRequestsException import TooManyRequestsException
 
 
 def fetch(symbol: str, apikey: str) -> dict:
