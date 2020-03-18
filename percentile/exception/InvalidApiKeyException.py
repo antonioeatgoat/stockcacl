@@ -1,8 +1,8 @@
-from exception.PercentileException import PercentileException
+from percentile.exception.PercentileException import PercentileException
 
 
-class TooManyRequestsException(PercentileException):
-    """Exception raised if the API calls quota is exceeded
+class InvalidApiKeyException(PercentileException):
+    """Exception raised for errors related to API key.
 
     Attributes:
         response -- message from API

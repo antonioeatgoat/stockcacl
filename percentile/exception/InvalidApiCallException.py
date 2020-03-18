@@ -1,8 +1,8 @@
-from exception.PercentileException import PercentileException
+from percentile.exception.PercentileException import PercentileException
 
 
-class InvalidApiKeyException(PercentileException):
-    """Exception raised for errors related to API key.
+class InvalidApiCallException(PercentileException):
+    """Exception raised for an invalid API call
 
     Attributes:
         response -- message from API

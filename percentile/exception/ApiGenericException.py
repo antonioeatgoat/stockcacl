@@ -1,4 +1,4 @@
-from exception.PercentileException import PercentileException
+from percentile.exception.PercentileException import PercentileException
 
 
 class ApiGenericException(PercentileException):
