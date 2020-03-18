@@ -21,7 +21,7 @@ except InvalidApiKeyException as err:
     print(err)
     sys.exit(1)
 except InvalidApiCallException as err:
-    print("It seems there is a problem with your API key. Probably you are using a wrong symbol.")
+    print("It seems there is a problem with your API call. Probably you are using a wrong symbol.")
     sys.exit(1)
 except (ApiGenericException, TooManyRequestsException) as err:
     print(err)
