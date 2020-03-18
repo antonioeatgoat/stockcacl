@@ -5,7 +5,7 @@ from percentile.exception.ApiGenericException import ApiGenericException
 from percentile.exception.TooManyRequestsException import TooManyRequestsException
 import percentile._interface.input as percentile_input
 import percentile._interface.output as percentile_output
-import percentile.percentile
+import percentile.core
 from dotenv import load_dotenv
 import os
 import sys
@@ -27,13 +27,13 @@ except (ApiGenericException, TooManyRequestsException) as err:
     print(err)
     sys.exit(1)
 
-prices = percentile.extract_prices(response)
+prices = percentile.core.extract_prices(response)
 
-earnings = percentile.calculate_earnings(prices[:36 * 5 + 1])
+earnings = percentile.core.calculate_earnings(prices[:36 * 5 + 1])
 
-weekly_earnings = percentile.group_by_weeks(earnings, 36)
+weekly_earnings = percentile.core.group_by_weeks(earnings, 36)
 
-percentile = percentile.calculate_percentile(weekly_earnings)
+percentile = percentile.core.calculate_percentile(weekly_earnings)
 
 if percentile_input.is_numeric_output():
     percentile_output.print_numeric_percentile(percentile)
