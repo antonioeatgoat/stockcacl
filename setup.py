@@ -7,7 +7,7 @@ setuptools.setup(
     description="Stock Calculator - Percentile Analysis",
     long_description="A simple python module to perform percentile analysis on stock data",
     long_description_content_type="text/markdown",
-    url="https://github.com/antonioeatgoat/percentile-analysis",
+    url="https://github.com/antonioeatgoat/stockcacl/",
     packages=setuptools.find_packages(),
     install_requires=['pandas', 'requests'],
     classifiers=[
