@@ -1,8 +1,8 @@
-from percentile.exception.PercentileException import PercentileException
+from stockcalc.exception.PercentileException import PercentileException
 
 
-class InvalidApiCallException(PercentileException):
-    """Exception raised for an invalid API call
+class TooManyRequestsException(PercentileException):
+    """Exception raised if the API calls quota is exceeded
 
     Attributes:
         response -- message from API

@@ -1,4 +1,4 @@
-from percentile.exception.PercentileException import PercentileException
+from stockcalc.exception.PercentileException import PercentileException
 
 
 class InvalidApiKeyException(PercentileException):

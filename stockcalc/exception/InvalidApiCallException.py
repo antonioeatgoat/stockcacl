@@ -1,8 +1,8 @@
-from percentile.exception.PercentileException import PercentileException
+from stockcalc.exception.PercentileException import PercentileException
 
 
-class ApiGenericException(PercentileException):
-    """Exception raised for an unidentified API error
+class InvalidApiCallException(PercentileException):
+    """Exception raised for an invalid API call
 
     Attributes:
         response -- message from API
