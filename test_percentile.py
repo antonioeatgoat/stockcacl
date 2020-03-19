@@ -1,5 +1,5 @@
 import unittest
-import percentile.core
+import stockcalc.core
 
 
 class TestsPercentile(unittest.TestCase):
@@ -25,32 +25,32 @@ class TestsPercentile(unittest.TestCase):
     def test_calculates_weekly_average_prices(self):
         expected = [6.4, 5.2, 5.2]
 
-        prices = percentile.core.extract_prices(self.closing_prices)
+        prices = stockcalc.core.extract_prices(self.closing_prices)
 
         # Limit minor than number of days
-        self.assertEqual(expected, percentile.core.group_by_weeks(prices, 3))
+        self.assertEqual(expected, stockcalc.core.group_by_weeks(prices, 3))
 
         # Limit partially exceeding the number of days
-        self.assertEqual(expected, percentile.core.group_by_weeks(prices, 4))
+        self.assertEqual(expected, stockcalc.core.group_by_weeks(prices, 4))
 
         # Limit exceeding the number of days by more than one week
-        self.assertEqual(expected, percentile.core.group_by_weeks(prices, 5))
+        self.assertEqual(expected, stockcalc.core.group_by_weeks(prices, 5))
 
     def test_calculate_earnings(self):
         expected = [.67, -.5, -.25, -.20, 2.33, .50, -.75, 0.0, .60, .67, -.25, -.33, -.14, .17, 0.0]
 
-        prices = percentile.core.extract_prices(self.closing_prices)
+        prices = stockcalc.core.extract_prices(self.closing_prices)
 
-        self.assertEqual(expected, percentile.core.calculate_earnings(prices))
+        self.assertEqual(expected, stockcalc.core.calculate_earnings(prices))
 
     def test_calculate_percentile(self):
         expected = 0.9
 
-        prices = percentile.core.extract_prices(self.closing_prices)
+        prices = stockcalc.core.extract_prices(self.closing_prices)
 
-        earnings = percentile.core.calculate_earnings(prices)
+        earnings = stockcalc.core.calculate_earnings(prices)
 
-        self.assertEqual(expected, percentile.core.calculate_percentile(earnings))
+        self.assertEqual(expected, stockcalc.core.calculate_percentile(earnings))
 
 
 if __name__ == '__main__':

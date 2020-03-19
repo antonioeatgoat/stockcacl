@@ -41,6 +41,3 @@ def calculate_percentile(prices: []):
 
     return percentiles[0].round(2).tolist()[0]
 
-
-if __name__ == "__main__":
-    print('percentile-py file called')

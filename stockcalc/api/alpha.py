@@ -6,10 +6,10 @@ Get apikey: https://www.alphavantage.co/support/#api-key
 """
 
 import requests
-from percentile.exception.InvalidApiKeyException import InvalidApiKeyException
-from percentile.exception.InvalidApiCallException import InvalidApiCallException
-from percentile.exception.ApiGenericException import ApiGenericException
-from percentile.exception.TooManyRequestsException import TooManyRequestsException
+from stockcalc.exception.InvalidApiKeyException import InvalidApiKeyException
+from stockcalc.exception.InvalidApiCallException import InvalidApiCallException
+from stockcalc.exception.ApiGenericException import ApiGenericException
+from stockcalc.exception.TooManyRequestsException import TooManyRequestsException
 
 
 def fetch(symbol: str, apikey: str) -> dict:
