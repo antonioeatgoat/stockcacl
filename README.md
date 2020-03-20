@@ -6,7 +6,7 @@ A simple python module to perform percentile analysis on stock data
 
 Linux user can install it using pip:
 
-    sudo pip install --upgrade stockcalc
+    python3 -m pip install --upgrade stockcalc
 
 This command will update youtube-dl if you have already installed it.
 
