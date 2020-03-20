@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="stockcacl",
-    version="0.1.0",
+    version="0.1.1",
     author="Antonio Mangiacapra",
     description="Stock Calculator - Percentile Analysis",
     long_description="A simple python module to perform percentile analysis on stock data",
