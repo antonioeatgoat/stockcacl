@@ -9,7 +9,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/antonioeatgoat/stockcacl/",
     packages=setuptools.find_packages(),
-    install_requires=['pandas', 'requests'],
+    install_requires=['python-dotenv', 'pandas', 'requests'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
